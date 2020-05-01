@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice-print</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <link rel="stylesheet" href="assets/CSS/snackBar.css" type="text/css">
+    <style>
+        #amountTable td {
+            padding: 2px !important;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+    *{
+        font-family: 'Oswald', sans-serif !important;
+    }
+    </style>
+
+</head>
+
+<body style="background-color:rgb(240,240,240)" onload="loadData()">
+
+    <div class=" container-fluid ">
+        <div class="mt-3 mx-auto" style="text-align: center;;">
+            <button class="btn   fas fa-print" style="color:darkblue;" onclick="printSpecificArea('printInvoice')">
+                <b>PRINT INVOICE</b> </button>
+        
+        <div id="printInvoice">
+            <div class=" border mx-auto m-5 p-4 shadow-lg"
+                style="width:5.83in;height:8.27in;position: relative;background-color:white;">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="float:center;">
+                            <div style="font-size:25px">
+                                <b>Lalitpur Corona Free Store</b></div>
+                            <div>
+                                Lalitpur, Nepal; Phone number: 01-5520XXX
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="border:1px solid darkblue;">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="font-size:15px" align="left">
+                            <div id="dateD">Date : </div>
+                            <div id="invoiceNumberD">Invoice Number : </div>
+                            <div id="customerNameD">customer Name : </div>
+                            <div id="customerAddressD">Address : </div>
+                            <div id="customerPhoneD">Phone : </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <table class="table  table-bordered table-striped">
+                            <thead class="table-success ">
+                                <tr>
+                                    <td><b>SN</b></td>
+                                    <td><b>Items</b></td>
+                                    <td><b>Quantity</b></td>
+                                    <td><b>Rate</b></td>
+                                    <td><b>Amount</b></td>
+
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceItems">
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table-sm " style="float:right;" id="amountTable">
+                            <tbody>
+                                <tr>
+
+                                    <td><b>Sub-total : </b></td>
+                                    <td>Rs.<span id="subTotal">0</span></td>
+                                </tr>
+
+                                <tr>
+
+                                    <td><b>VAT (13%) : </b></td>
+                                    <td>Rs.<span id="vat">0</span></td>
+                                </tr>
+
+                                <tr style="border-top: 1px solid black;">
+
+                                    <td><b>Total : </b></td>
+                                    <td>Rs.<span id="total">0</span></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col",style="float:left;height:0.5in;width:20%;">
+                        <table class="table-sm table-bordered  m-1" style="float:left;height:0.2in;width:30%;">
+                            <thead>
+                                <td class="bg-info p-2" style="color:white">
+                                    <b>AMOUNT IN WORDS</b>
+                                </td>
+                            </thead>
+                            <table class="table-sm table-bordered  m-1" style="float:left;height:0.7in;width:100%;">
+                                <tbody>
+                                <tr>
+                                    <td class="p-2"><span id="amountInWords">Zero </span> Rupees Only /-
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="assets/JS/loadData.js"></script>
+    <script src="assets/JS/retrieveItem.js"></script>
+    <script src="assets/JS/valueViewer.js"></script>
+    <script src="assets/JS/retrieveCustomerDetails.js"></script>
+    <script src="assets/JS/valueAdder.js"></script>
+    <script src="assets/JS/amountViewer.js"></script>
+    <script src="assets/JS/subTotal.js"></script>
+    <script src="assets/JS/percentageAdder.js"></script>
+    <script src="assets/JS/toWord.js"></script>
+    <script src="assets/JS/receiveString.js"></script>
+    <script src="assets/JS/receiveValues.js"></script>
+    <script src="assets/JS/printSpecificArea.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="assets/JS/decrypt.js"></script>
+
+</body>
+
+</html>

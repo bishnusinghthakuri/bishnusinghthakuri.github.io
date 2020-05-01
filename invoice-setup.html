@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Setup</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <link rel="stylesheet" href="assets/CSS/snackBar.css" type="text/css">
+    <style>
+        #amountTable td {
+            padding: 2px !important;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+    *{
+        font-family: 'Oswald', sans-serif !important;
+    }
+    </style>
+    </style>
+</head>
+
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+    		<div class="invoice-title">
+                <h1> <center>Lalitpur Corona Free Store</center></h1>
+                    <p><center>Lalitpur, Nepal</center></p>
+                    <p><center>Phone number: 01-5520XXX</center></p>
+                <h1>Invoice</h1>
+                <hr>
+
+                <div class="form-group">
+                    <label for="date">Date : </label>
+                    <input class="form-control" type="date" id="date" name="Date" placeholder="Enter Date" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceNumber">Invoice Number :</label>
+                    <input class="form-control" type="number" id="invoiceNumber" placeholder="Enter Invoice Number"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">Customer Name :</label>
+                    <input class="form-control" type="text" id="customerName" value="" name="Name"
+                        placeholder="Enter Customer Name" required></div>
+
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Customer Address :</label>
+                    <input class="form-control" type="text" id="customerAddress" value="" name="Address"
+                        placeholder="Enter Customer Address" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Customer Phone Number :</label>
+                    <input class="form-control" type="number" id="customerPhone" value="" name="Phone Number"
+                        placeholder="Enter Phone Number" required>
+
+                </div>
+                <div class="form-group" style="float: left;">
+                    <button class="btn btn-info" onclick="insertCustomerDetails()">Assign Customer Details</button>
+                </div>
+                <div class="form-group" style="float: right;">
+                    <button class="btn btn-warning" onclick="clearInvoiceCustomerDetails()">Clear Customer Details</button>
+                </div>
+            </div>
+ <body>
+     </div>
+     <hr style="border:0.5px solid grey;">
+ </body>           
+            
+            <div class="container">
+                <div class="row">
+                <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="itemName">Name of Item</label>
+                    <input class="form-control" type="text" placeholder="Enter Item Name" value="" id="itemName"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="itemQuantity">Quantity</label>
+                    <input class="form-control" type="number" placeholder="Enter the no of items" value=""
+                        id="itemQuantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemRate">Rate :</label>
+                    <input class="form-control" type="number" placeholder="Enter the rate of item" value=""
+                        id="itemRate" required>
+                </div>
+                <div class="form-group" style="float: left;">
+                    <button class="btn btn-info" onclick="addItem()">Assign values/ add items</button>
+                </div>
+                <div class="form-group" style="float: right;">
+                    <button class='btn btn-warning' onclick="clearInvoiceItems()">Clear
+                        Items Value</button>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success form-control" onclick="window.open('invoice-print.html','_blank')">
+                        Invoice for print</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="snackbar"></div>
+
+
+
+    <script src="assets/JS/receiveString.js"></script>
+    <script src="assets/JS/receiveValues.js"></script>
+
+    <script src="assets/JS/insertCustomerDetails.js"></script>
+    <script src="assets/JS/clearInvoice.js"></script>
+    <script src="assets/JS/addItem.js"></script>
+    <script src="assets/JS/snackBar.js"></script>
+    <script src="assets/JS/encrypt.js"></script>
+    <script src="assets/JS/decrypt.js"></script>
+</body>
+
+</html>
